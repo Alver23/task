@@ -5,6 +5,10 @@ use Illuminate\Http\Response;
 
 trait RESTActions {
 
+    /**
+     * Obtenemos todos los registros del modelo
+     * @return mixed
+     */
     public function all()
     {
         $model = self::MODEL;
@@ -15,6 +19,12 @@ trait RESTActions {
         return $this->respond(Response::HTTP_OK, $data->toArray());
     }
 
+    /**
+     * Obtenemos el registro por id
+     * @param Request $request
+     * @param integer $id
+     * @return mixed
+     */
     public function get(Request $request, $id)
     {
         $model = self::MODEL;
@@ -28,6 +38,11 @@ trait RESTActions {
         return $this->respond(Response::HTTP_OK, $data->toArray());
     }
 
+    /**
+     * Agregamos un nuevo registro
+     * @param Request $request
+     * @return mixed
+     */
     public function add(Request $request)
     {
         $model = self::MODEL;
@@ -38,6 +53,12 @@ trait RESTActions {
         return $this->respond(Response::HTTP_CREATED, $model::create($request->all()));
     }
 
+    /**
+     * Actualizamos el registro por id
+     * @param Request $request
+     * @param integer $id
+     * @return mixed
+     */
     public function put(Request $request, $id)
     {
         $model = self::MODEL;
@@ -50,6 +71,11 @@ trait RESTActions {
         return $this->respond(Response::HTTP_OK, $model);
     }
 
+    /**
+     * Eliminamos el registro por id
+     * @param integer $id
+     * @return mixed
+     */
     public function remove($id)
     {
         $model = self::MODEL;
@@ -60,6 +86,11 @@ trait RESTActions {
         return $this->respond(Response::HTTP_NO_CONTENT);
     }
 
+    /**
+     * Restauramos el registro por id
+     * @param integer $id
+     * @return mixed
+     */
     public function restore($id)
     {
         $model = self::MODEL;
@@ -71,6 +102,12 @@ trait RESTActions {
         return $this->respond(Response::HTTP_OK, $data);
     }
 
+    /**
+     * Deveolvemos la respuesta en formato json con el status y data
+     * @param integer $status
+     * @param array $data
+     * @return mixed
+     */
     protected function respond($status, $data = [])
     {
         return response()->json($data, $status);

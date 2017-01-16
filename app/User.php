@@ -1,13 +1,16 @@
 <?php
 
 namespace App;
-
-use App\Traits\ModelUtil;
 use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+
+/**
+ * Traits
+ */
+use App\Traits\ModelUtil;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -19,11 +22,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'token',
+        'first_name',
+        'last_name',
+        'email',
+        'token',
     ];
 
     protected $dates = [
-        'created_at', 'updated_at', 'deleted_at'
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     /**
@@ -41,6 +49,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'deleted_at'
     ];
 
+    /**
+     * Reglas de valudacion para el create y el update
+     * @param integer $id
+     * @return array
+     */
     public static function rules($id = null)
     {
         return [
@@ -50,10 +63,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         ];
     }
 
+    /**
+     * Relacion con tareas
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function tasks()
     {
         return $this->hasMany('App\Task');
     }
-
-
 }

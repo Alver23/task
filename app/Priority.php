@@ -2,15 +2,29 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Traits
+ */
 use App\Traits\ModelUtil;
 
 class Priority extends Model
 {
     use ModelUtil;
-    protected $fillable = ["name", "description"];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'description',
+    ];
 
     protected $dates = [
-        'created_at', 'updated_at', 'deleted_at'
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     /**
@@ -27,6 +41,10 @@ class Priority extends Model
         'deleted_at'
     ];
 
+    /**
+     * Reglas de valudacion para el create y el update
+     * @return array
+     */
     public static function rules()
     {
         return [
