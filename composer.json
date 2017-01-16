@@ -10,7 +10,8 @@
         "vlucas/phpdotenv": "~2.2",
         "laravelista/lumen-vendor-publish": "^2.0",
         "appzcoder/lumen-routes-list": "^1.0",
-        "wn/lumen-generators": "^1.2"
+        "wn/lumen-generators": "^1.2",
+        "vluzrmos/lumen-cors": "2.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

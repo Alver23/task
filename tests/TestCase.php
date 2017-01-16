@@ -2,6 +2,7 @@
 
 abstract class TestCase extends Laravel\Lumen\Testing\TestCase
 {
+    protected $baseUrl = 'http://localhost:8000/api/v1';
     /**
      * Creates the application.
      *
@@ -10,5 +11,10 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
     public function createApplication()
     {
         return require __DIR__.'/../bootstrap/app.php';
+    }
+    public function setUp()
+    {
+        parent::setUp();
+        $this->app->instance('middleware.disable', true);
     }
 }
