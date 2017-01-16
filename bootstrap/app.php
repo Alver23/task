@@ -66,6 +66,9 @@ $app->singleton(
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
+$app->middleware([
+    App\Http\Middleware\ApiAuthenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +84,8 @@ $app->singleton(
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Appzcoder\LumenRoutesList\RoutesCommandServiceProvider::class);
+$app->register('Wn\Generators\CommandsServiceProvider');
 
 /*
 |--------------------------------------------------------------------------

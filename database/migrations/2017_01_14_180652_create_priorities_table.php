@@ -17,13 +17,8 @@ class CreatePrioritiesTable extends Migration
             $table->increments('id');
             $table->string('name', 80);
             $table->string('description', 8192)->nullable();
-            $table->string('ip_address', 15)->default('127.0.0.1');
-            $table->integer('owner_user_id')->unsigned()->nullable();
-            $table->integer('updater_user_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('owner_user_id')->references('id')->on('users');
-            $table->foreign('updater_user_id')->references('id')->on('users');
         });
     }
 

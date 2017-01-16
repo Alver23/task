@@ -17,24 +17,12 @@ class PrioritiesTableSeeder extends Seeder
         DB::table('priorities')->insert([
             [
                 'name' => 'High',
-                'owner_user_id' => 1,
-                'updater_user_id' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Medium',
-                'owner_user_id' => 1,
-                'updater_user_id' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
             ],
             [
                 'name' => 'Low',
-                'owner_user_id' => 1,
-                'updater_user_id' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now()
             ]
         ]);
     }

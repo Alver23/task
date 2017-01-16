@@ -19,13 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('last_name', 80);
             $table->string('email');
             $table->string('token');
-            $table->string('ip_address', 15)->default('127.0.0.1');
-            $table->integer('owner_user_id')->unsigned()->nullable();
-            $table->integer('updater_user_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('owner_user_id')->references('id')->on('users');
-            $table->foreign('updater_user_id')->references('id')->on('users');
         });
     }
 
