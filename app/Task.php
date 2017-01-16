@@ -46,15 +46,17 @@ class Task extends Model {
 
     /**
      * Reglas de valudacion para el create y el update
+     * @param string $method
      * @return array
      */
-    public static function rules()
+    public static function rules($method = 'POST')
     {
+        $rules = ($method === 'POST') ? 'required|' : '';
         return [
-            'user_id' => 'required|integer',
-            'priority_id' => 'required|integer',
-            'name' => 'required|max:80',
-            'due_date' => 'required|date_format:Y-m-d',
+            'user_id' => $rules . 'integer',
+            'priority_id' => $rules .'integer',
+            'name' => $rules .'max:80',
+            'due_date' => $rules .'date_format:Y-m-d',
         ];
     }
 

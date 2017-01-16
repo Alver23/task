@@ -43,12 +43,14 @@ class Priority extends Model
 
     /**
      * Reglas de valudacion para el create y el update
+     * @param string $method
      * @return array
      */
-    public static function rules()
+    public static function rules($method = 'POST')
     {
+        $rules = ($method === 'POST') ? 'required|' : '';
         return [
-            'name' => 'required|max:80',
+            'name' => $rules . 'max:80',
         ];
     }
 }

@@ -62,7 +62,7 @@ trait RESTActions {
     public function put(Request $request, $id)
     {
         $model = self::MODEL;
-        $this->validate($request, $model::rules($id));
+        $this->validate($request, $model::rules('PUT', $id));
         $model = $model::find($id);
         if(is_null($model)){
             return $this->respond(Response::HTTP_NOT_FOUND);

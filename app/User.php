@@ -49,17 +49,21 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'deleted_at'
     ];
 
+
     /**
-     * Reglas de valudacion para el create y el update
+     * * Reglas de valudacion para el create y el update
+     * @param string $method
      * @param integer $id
      * @return array
      */
-    public static function rules($id = null)
+    public static function rules($method = 'POST', $id = null)
     {
+        $ruleName = ($method === 'POST') ? 'required|max:80' : 'max:80';
+        $ruleEmail = ($method === 'POST') ? 'required|' : '';
         return [
-            'first_name' => 'required|max:80',
-            'last_name' => 'required|max:80',
-            'email' => 'required|email|unique:users,email,'.$id .',id',
+            'first_name' => $ruleName,
+            'last_name' => $ruleName,
+            'email' => $ruleEmail . 'email|unique:users,email,'.$id .',id',
         ];
     }
 
