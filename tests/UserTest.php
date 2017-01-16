@@ -10,7 +10,7 @@
 class UserTest extends TestCase
 {
 
-    public function test_user_get()
+    public function test_user_all()
     {
         $response = $this->call('GET', '/user');
         $this->assertResponseOk();
