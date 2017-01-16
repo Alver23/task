@@ -1,21 +1,54 @@
-# Lumen PHP Framework
+# API NestDots Task
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+La API cuenta con un usuario para realizar las peticiones.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+- First Name: Demo
+- Last Name: Demo
+- Email: demo@demo.com
+- Token: 4oigKQThQfilJH0077+VT+WJu3DcSeuk4peE4gRI+Nw=
 
-## Official Documentation
+## Metodos disponibles
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+Todos los metodos realizados deben llevar un header en la
+peticion (token = value), el cual permite consumir cualquier metodo.
+ 
+- GET
+- POST
+- PUT
+- DELETE
 
-## Security Vulnerabilities
+### Rutas disponibles.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+#### Rutas para usuarios
 
-## License
+```php
+$app->get('user', 'UsersController@all');
+$app->get('user/{id}', 'UsersController@get');
+$app->post('user', 'UsersController@add');
+$app->put('user/{id}', 'UsersController@put');
+$app->delete('user/{id}', 'UsersController@remove');
+$app->post('user/{id}/restore', 'UsersController@restore');
+$app->get('user/{id}/task', 'UsersController@task');
+```
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+#### Rutas para prioridades
+
+```php
+$app->get('priority', 'PrioritiesController@all');
+$app->get('priority/{id}', 'PrioritiesController@get');
+$app->post('priority', 'PrioritiesController@add');
+$app->put('priority/{id}', 'PrioritiesController@put');
+$app->delete('priority/{id}', 'PrioritiesController@remove');
+$app->post('priority/{id}/restore', 'PrioritiesController@restore');
+```
+
+#### Rutas para las tareas
+
+```php
+$app->get('task', 'TasksController@all');
+$app->get('task/{id}', 'TasksController@get');
+$app->post('task', 'TasksController@add');
+$app->put('task/{id}', 'TasksController@put');
+$app->delete('task/{id}', 'TasksController@remove');
+$app->post('task/{id}/restore', 'TasksController@restore');
+```
